@@ -1,0 +1,13 @@
+.content_backdrop {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    display: block;
+    z-index: 3;
+    visibility: hidden;
+    background-color: rgba(0,0,0,.6);
+    transition-duration: .4s;
+    transition-property: visibility;
+  }
