@@ -39,7 +39,9 @@ export class SidenavContainerComponent {
       this._mobileQueryListener();
   }
   ngOnDestroy(): void {
-    this.mobileQuery.removeListener(this._mobileQueryListener);
+    if(this.mobileQuery) {
+      this.mobileQuery.removeListener(this._mobileQueryListener);
+    }
   }
   private _mobileQueryListener() {
     if (this.mobileQuery.matches && this.responsive) {
