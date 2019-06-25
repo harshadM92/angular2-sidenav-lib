@@ -9,7 +9,7 @@ import { Constant } from './sideNav.constant';
   templateUrl: './sidenav-container.component.html',
   styleUrls: ['./sidenav-container.component.scss']
 })
-export class SidenavContainerComponent implements OnInit {
+export class SidenavContainerComponent {
   @ContentChild(SidenavMenuComponent) sidenavMenuComponent: SidenavMenuComponent;
   @ContentChild(SidenavContentComponent) sidenavContentComponent: SidenavContentComponent;
   @ViewChild("backdrop") backdrop: ElementRef;
@@ -25,15 +25,12 @@ export class SidenavContainerComponent implements OnInit {
   constructor() {
   }
 
-  ngOnInit() {
-    if (this.navMode === "push" && !(this.mobileQuery.matches && this.responsive)) {
-      this.toggle();
-    }
-  }
   ngAfterViewInit() {
     this.mobileQuery.matches = window.innerWidth <= Constant.mobileMinWidth ? true : false;
     if (this.mobileQuery.matches && this.responsive) {
       this.convertSideNavForMobile();
+    } else if (this.navMode === "push") {
+      this.toggle();
     }
   }
   @HostListener('window:resize', ['$event'])
