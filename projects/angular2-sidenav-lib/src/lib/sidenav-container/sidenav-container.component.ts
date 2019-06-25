@@ -38,11 +38,11 @@ export class SidenavContainerComponent {
       this.mobileQuery.matches = window.innerWidth <= Constant.mobileMinWidth ? true : false;
       this._mobileQueryListener();
   }
-  ngOnDestroy(): void {
-    if(this.mobileQuery) {
-      this.mobileQuery.removeListener(this._mobileQueryListener);
-    }
-  }
+  // ngOnDestroy(): void {
+  //   if(this.mobileQuery) {
+  //     this.mobileQuery.removeListener(this._mobileQueryListener);
+  //   }
+  // }
   private _mobileQueryListener() {
     if (this.mobileQuery.matches && this.responsive) {
       this.convertSideNavForMobile();
